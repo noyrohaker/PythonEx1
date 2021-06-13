@@ -25,20 +25,30 @@ if __name__ == '__main__':
                 "Hola Mundo",
                 "׀ׁ€׀¸׀²׀µׁ‚ ׀¼׀¸ׁ€",
             ]
-
-            self.button = QPushButton("Get the posts from Instagram")
-            self.input = QPlainTextEdit()
+            self.instaInput = QPlainTextEdit()
+            self.instaButton = QPushButton("Get the posts from Instagram")
+            self.facebookInput = QPlainTextEdit()
+            self.facebookButton = QPushButton("Get the posts from facebook")
 
             self.layout = QVBoxLayout(self)
-            self.layout.addWidget(self.input)
-            self.layout.addWidget(self.button)
+            self.layout.addWidget(self.instaInput)
+            self.layout.addWidget(self.instaButton)
+            self.layout.addWidget(self.facebookInput)
+            self.layout.addWidget(self.facebookButton)
 
             # Connecting the signal
-            self.button.clicked.connect(self.magic)
+            self.facebookButton.clicked.connect(self.showText)
 
         @Slot()
-        def magic(self):
-            self.message.text = random.choice(self.hello)
+        def showText(self):
+            print(self.facebookInput.toPlainText())
+
+            self.instaButton.clicked.connect(self.instalootuser)
+
+
+        @Slot()
+        def instalootuser(self):
+            print(self.instaInput.toPlainText())
 
 
     if __name__ == "__main__":
