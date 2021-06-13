@@ -5,8 +5,10 @@ from turtle import textinput
 
 from PySide6.Qt3DInput import Qt3DInput
 from PySide6.QtCore import Qt, Slot
-from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QVBoxLayout, QWidget,QPlainTextEdit)
+from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QVBoxLayout, QWidget, QPlainTextEdit)
+from TikTokApi import TikTokApi
 
+TikTokApi = TikTokApi()
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -38,17 +40,16 @@ if __name__ == '__main__':
 
             # Connecting the signal
             self.facebookButton.clicked.connect(self.showText)
+            self.instaButton.clicked.connect(self.instalootuser)
 
         @Slot()
         def showText(self):
             print(self.facebookInput.toPlainText())
 
-            self.instaButton.clicked.connect(self.instalootuser)
-
-
         @Slot()
         def instalootuser(self):
-            print(self.instaInput.toPlainText())
+            user_videos = TikTokApi.byUsername(self.instaInput.toPlainText(), 10)
+            print(user_videos)
 
 
     if __name__ == "__main__":
